@@ -113,13 +113,13 @@ Tried
 
 which returned
 
-IN-USE  SSID              MODE   CHAN  RATE        SIGNAL  BARS  SECURITY
-        redacted 054         Infra  11    195 Mbit/s  100     ▂▄▆█  WPA2
-        redacted_6C1D13      Infra  1     195 Mbit/s  55      ▂▄__  WPA2
-        redacted Work        Infra  1     195 Mbit/s  55      ▂▄__  WPA2 802.1X
-        redacted Public      Infra  1     195 Mbit/s  50      ▂▄__  WPA2
-        redactednergi        Infra  6     195 Mbit/s  44      ▂▄__  WPA2
-        --                   Infra  6     195 Mbit/s  44      ▂▄__  WPA2
+	IN-USE  SSID              MODE   CHAN  RATE        SIGNAL  BARS  SECURITY
+	        redacted 054         Infra  11    195 Mbit/s  100     ▂▄▆█  WPA2
+	        redacted_6C1D13      Infra  1     195 Mbit/s  55      ▂▄__  WPA2
+	        redacted Work        Infra  1     195 Mbit/s  55      ▂▄__  WPA2 802.1X
+	        redacted Public      Infra  1     195 Mbit/s  50      ▂▄__  WPA2
+	        redactednergi        Infra  6     195 Mbit/s  44      ▂▄__  WPA2
+	        --                   Infra  6     195 Mbit/s  44      ▂▄__  WPA2
 
 IN-USE  SSID  MODE  CHAN  RATE  SIGNAL  BARS  SECURITY
 
