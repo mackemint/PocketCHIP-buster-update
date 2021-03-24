@@ -35,3 +35,6 @@ Upgrading to Debian 10:
     replace /etc/X11/xorg.conf -> wget maba.dk/xorg.conf_debian10
 
 Reboot
+
+Check documentation on how to setup wifi http://chip.jfpossibilities.com/docs/pocketchip.html
+Check the Readme on how to get pico8 working
