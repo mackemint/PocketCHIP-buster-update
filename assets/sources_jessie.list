@@ -1,0 +1,4 @@
+deb http://archive.debian.org/debian/ jessie main contrib non-free
+deb http://security.debian.org/ jessie/updates main contrib non-free
+deb http://chip.jfpossibilities.com/chip/debian/repo jessie main
+deb http://chip.jfpossibilities.com/chip/debian/pocketchip jessie main

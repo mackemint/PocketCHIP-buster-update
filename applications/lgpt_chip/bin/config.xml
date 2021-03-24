@@ -1,0 +1,18 @@
+<CONFIG>
+	<BACKGROUND value="000000" />
+	<FOREGROUND value="FF9FFF" /> <!-- text and cursor in cursor -->
+	<HICOLOR1 value="FF9900" /> <!-- row count in song screen -->
+	<HICOLOR2 value="7FFF00" /> <!-- cursor-->
+
+	<KEY_A value="key:0:backspace" />
+	<KEY_B value="key:0:return" />
+	<KEY_LEFT value="key:0:left" />
+	<KEY_RIGHT value="key:0:right" />
+	<KEY_UP value="key:0:up" />
+	<KEY_DOWN value="key:0:down" />
+	<KEY_LSHOULDER value="key:0:1" />
+	<KEY_RSHOULDER value="key:0:9" />
+	<KEY_START value="space" />
+	
+	<FULLSCREEN value='NO'/>
+</CONFIG>

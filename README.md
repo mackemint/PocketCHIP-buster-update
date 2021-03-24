@@ -1,4 +1,8 @@
 # PocketCHIP-buster-update
+
+TL;DR: Check the how-to.md
+
+
 Updating to Buster:
 The whole process took about half a work-day with check-ins here and there while the unit chugged along, which gave me a perfect opportunity to procrastinate from painfully boring work. :D
 
@@ -161,4 +165,33 @@ This seems to require libcurl3, which isn't available for Buster.
 
 	/usr/lib/pico-8/pico8: /usr/lib/arm-linux-gnueabihf/libcurl.so.4: version `CURL_OPENSSL_3' not found (required by /usr/lib/pico-8/pico8)
 
-To be continued...
+I placed the libcurl.so.3 in the same folder as pico8 /usr/lib/pico-8
+then prepended the execution of pico8 in my script with an
+	env LD_PRELOAD=/usr/lib/pico-8/libcurl.so.3
+Voila! Back to crunching in Celeste you! =D
+
+ 
+I remade the homescreen to fit my needs, it goes here
+	/usr/share/pocket-home/config.json
+together with the files in assets/appIcons
+
+
+
+Audio glitches:
+
+A huge problem with CHIP is that anything audio-related will stutter.
+This repo solves a lot of the problems:
+
+	https://github.com/aleh/pocketchip-batt
+
+I also made a collection of scripts (scripts folder in this repo) that will mitigate this even further
+My scripts require sudo to run, if you don't wanna type passwords you can add them to sudoers
+	sudo nano /etc/sudoers
+
+The nuclear option is to disable pulseaudio:
+	pulseaudio -k 
+until it complains that the process isn't there, then rename the binary 
+	mv /usr/bin/pulseaudio  /usr/bin/pulseaudio~
+Haven't found any downsides to doing this though
+
+
