@@ -2,6 +2,11 @@
 
 TL;DR: Check the how-to.md
 
+Thanks to:
+	maba.dk from which this whole guide wouldn't have happened
+	NightRadio that helped me fix a lot of audio glitches
+	aleh for their excellent battery monitor
+	htkasm on Reddit for keeping the Wifi alive
 
 Updating to Buster:
 The whole process took about half a work-day with check-ins here and there while the unit chugged along, which gave me a perfect opportunity to procrastinate from painfully boring work. :D
@@ -26,8 +31,7 @@ https://www.reddit.com/r/ChipCommunity/comments/htkasm/chip_flashing_guide_july_
 This guide managed to get me up to Stretch, but I got the same problem as usual - screen black after loading bubble. Wifi still intact though thanks to the previous step with NetworkManager
 http://maba.dk/index.php/demo/pocketchip/
 
-I thought - what the heck, can't ruin it more than this so I immediately started upgrading to Buster
-Apt upgrade complained on a couple of dependencies, had to install them manually:
+I thought - what the heck, can't ruin it more than this so I immediately started upgrading to Buster. Apt upgrade complained on a couple of dependencies, had to install them manually:
 
 	sudo apt install -y libegl1 libgles1 libgles2 libwayland-egl1 libwayland-egl1-mesa
 
@@ -117,7 +121,7 @@ Tried
 
 which returned
 
-	IN-USE  SSID              MODE   CHAN  RATE        SIGNAL  BARS  SECURITY
+	IN-USE  SSID              MODE      CHAN  RATE       SIGNAL   BARS  SECURITY
 	        redacted 054         Infra  11    195 Mbit/s  100     ▂▄▆█  WPA2
 	        redacted_6C1D13      Infra  1     195 Mbit/s  55      ▂▄__  WPA2
 	        redacted Work        Infra  1     195 Mbit/s  55      ▂▄__  WPA2 802.1X
@@ -125,11 +129,11 @@ which returned
 	        redactednergi        Infra  6     195 Mbit/s  44      ▂▄__  WPA2
 	        --                   Infra  6     195 Mbit/s  44      ▂▄__  WPA2
 
-IN-USE  SSID  MODE  CHAN  RATE  SIGNAL  BARS  SECURITY
+	IN-USE  SSID  		 MODE       CHAN  RATE       SIGNAL   BARS  SECURITY
 
 Oh my, I'm on to something!
 
-According to the guide, this will do things:
+According to the guide (http://chip.jfpossibilities.com/docs/pocketchip.html), this will do things:
 	
 	sudo nmcli device wifi connect '(your wifi network name/SSID)' password '(your wifi password)' ifname wlan0
 
@@ -194,4 +198,6 @@ until it complains that the process isn't there, then rename the binary
 	mv /usr/bin/pulseaudio  /usr/bin/pulseaudio~
 Haven't found any downsides to doing this though
 
-
+TODO:
+	Figure out how to get wlan0 back again
+	Get a halfway decent video player for Youtube streaming working
