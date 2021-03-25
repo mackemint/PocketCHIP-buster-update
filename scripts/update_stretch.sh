@@ -12,4 +12,5 @@ sudo apt update --allow-insecure-repositories --allow-unauthenticated && sudo ap
 cp ../assets/xorg.conf_debian9  /etc/X11/xorg.conf
 cp ../assets/rc.lua  /home/chip/.config/awesome/rc.lua
 
-
+systemctl stop wpa_supplicant
+systemctl disable wpa_supplicant

@@ -4,7 +4,8 @@ Update to Stretch:
 	sudo ./update_stretch.sh
 	wait...
 	answer yes to restarts, no to everything else
-	reboot
+	sudo shutdown -h now
+    boot back up
 
 Update to Buster:
 	ssh in
