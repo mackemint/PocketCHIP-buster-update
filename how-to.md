@@ -1,13 +1,15 @@
 TL;DR:
 Update to Stretch:
-	run update_stretch.sh
+	cd scripts
+	sudo ./update_stretch.sh
 	wait...
 	answer no to everything
 	reboot
 
 Update to Buster:
 	ssh in
-	run update_buster.sh
+	cd scripts
+        sudo ./update_buster.sh
         wait...
         answer no to everything
         reboot
