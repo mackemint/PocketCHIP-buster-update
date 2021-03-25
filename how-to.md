@@ -3,7 +3,7 @@ Update to Stretch:
 	cd scripts
 	sudo ./update_stretch.sh
 	wait...
-	answer no to everything
+	answer yes to restarts, no to everything else
 	reboot
 
 Update to Buster:
@@ -11,7 +11,7 @@ Update to Buster:
 	cd scripts
         sudo ./update_buster.sh
         wait...
-        answer no to everything
+	answer yes to restarts, no to everything else
         reboot
 		
 
