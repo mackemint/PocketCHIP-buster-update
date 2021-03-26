@@ -2,6 +2,12 @@
 
 TL;DR: Check the how-to.md
 
+Thanks to:
+
+	maba.dk for which this whole guide wouldn't have happened
+	NightRadio that helped me fix a lot of audio glitches
+	aleh for their excellent battery monitor
+	htkasm on Reddit for keeping the Wifi alive
 
 Updating to Buster:
 The whole process took about half a work-day with check-ins here and there while the unit chugged along, which gave me a perfect opportunity to procrastinate from painfully boring work. :D
@@ -26,8 +32,7 @@ https://www.reddit.com/r/ChipCommunity/comments/htkasm/chip_flashing_guide_july_
 This guide managed to get me up to Stretch, but I got the same problem as usual - screen black after loading bubble. Wifi still intact though thanks to the previous step with NetworkManager
 http://maba.dk/index.php/demo/pocketchip/
 
-I thought - what the heck, can't ruin it more than this so I immediately started upgrading to Buster
-Apt upgrade complained on a couple of dependencies, had to install them manually:
+I thought - what the heck, can't ruin it more than this so I immediately started upgrading to Buster. Apt upgrade complained on a couple of dependencies, had to install them manually:
 
 	sudo apt install -y libegl1 libgles1 libgles2 libwayland-egl1 libwayland-egl1-mesa
 
@@ -71,22 +76,12 @@ Cracked it open in nano and found the last few lines I couldn't remember from th
 	[keyfile]
 	unmanaged-devices=interface-name:wlan1
 
-Did a 
-	sudo cp /etc/NetworkManager/NetworkManager.conf /etc/NetworkManager/NetworkManager.conf~
-just to be safe, opened the NetworkManager.conf again and got rid of the last lines to get this again:
+That turned out to be a red herring, the issue is that PocketCHIP sometimes doesn't enable WIFI when rebooting, only when power cycling.
+Thanks to user papasfritas on Reddit:
 
-	[main]
-	plugins=ifupdown,keyfile
-
-	[connection]
-	wifi.mac-address-randomization=1
-
-	[device]
-	wifi.scan-rand-mac-address=no
-
-Reboot
-
-Still no Wifi. Grumble..
+    https://www.reddit.com/r/ChipCommunity/comments/jlh83b/chip_and_debian_10_issues_gui_startx/
+    
+Still no Wifi though. Grumble..
 
 Tried nmcli again
 
@@ -117,7 +112,7 @@ Tried
 
 which returned
 
-	IN-USE  SSID              MODE   CHAN  RATE        SIGNAL  BARS  SECURITY
+	IN-USE  SSID              MODE      CHAN  RATE       SIGNAL   BARS  SECURITY
 	        redacted 054         Infra  11    195 Mbit/s  100     ▂▄▆█  WPA2
 	        redacted_6C1D13      Infra  1     195 Mbit/s  55      ▂▄__  WPA2
 	        redacted Work        Infra  1     195 Mbit/s  55      ▂▄__  WPA2 802.1X
@@ -125,11 +120,11 @@ which returned
 	        redactednergi        Infra  6     195 Mbit/s  44      ▂▄__  WPA2
 	        --                   Infra  6     195 Mbit/s  44      ▂▄__  WPA2
 
-IN-USE  SSID  MODE  CHAN  RATE  SIGNAL  BARS  SECURITY
+	IN-USE  SSID  		 MODE       CHAN  RATE       SIGNAL   BARS  SECURITY
 
 Oh my, I'm on to something!
 
-According to the guide, this will do things:
+According to the guide (http://chip.jfpossibilities.com/docs/pocketchip.html), this will do things:
 	
 	sudo nmcli device wifi connect '(your wifi network name/SSID)' password '(your wifi password)' ifname wlan0
 
@@ -194,4 +189,6 @@ until it complains that the process isn't there, then rename the binary
 	mv /usr/bin/pulseaudio  /usr/bin/pulseaudio~
 Haven't found any downsides to doing this though
 
-
+TODO:
+	Figure out how to get wlan0 back again
+	Get a halfway decent video player for Youtube streaming working
