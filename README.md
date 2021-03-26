@@ -3,7 +3,8 @@
 TL;DR: Check the how-to.md
 
 Thanks to:
-	maba.dk from which this whole guide wouldn't have happened
+
+	maba.dk for which this whole guide wouldn't have happened
 	NightRadio that helped me fix a lot of audio glitches
 	aleh for their excellent battery monitor
 	htkasm on Reddit for keeping the Wifi alive
@@ -75,22 +76,12 @@ Cracked it open in nano and found the last few lines I couldn't remember from th
 	[keyfile]
 	unmanaged-devices=interface-name:wlan1
 
-Did a 
-	sudo cp /etc/NetworkManager/NetworkManager.conf /etc/NetworkManager/NetworkManager.conf~
-just to be safe, opened the NetworkManager.conf again and got rid of the last lines to get this again:
+That turned out to be a red herring, the issue is that PocketCHIP sometimes doesn't enable WIFI when rebooting, only when power cycling.
+Thanks to user papasfritas on Reddit:
 
-	[main]
-	plugins=ifupdown,keyfile
-
-	[connection]
-	wifi.mac-address-randomization=1
-
-	[device]
-	wifi.scan-rand-mac-address=no
-
-Reboot
-
-Still no Wifi. Grumble..
+    https://www.reddit.com/r/ChipCommunity/comments/jlh83b/chip_and_debian_10_issues_gui_startx/
+    
+Still no Wifi though. Grumble..
 
 Tried nmcli again
 
