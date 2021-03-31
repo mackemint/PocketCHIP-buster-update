@@ -76,7 +76,7 @@ Cracked it open in nano and found the last few lines I couldn't remember from th
 	[keyfile]
 	unmanaged-devices=interface-name:wlan1
 
-That turned out to be a red herring, the issue is that PocketCHIP sometimes doesn't enable WIFI when rebooting, only when power cycling.
+That turned out to be a red herring, the issue is that PocketCHIP sometimes doesn't enable WIFI when rebooting, only when power cycling. 
 Thanks to user papasfritas on Reddit:
 
     https://www.reddit.com/r/ChipCommunity/comments/jlh83b/chip_and_debian_10_issues_gui_startx/
@@ -143,13 +143,20 @@ ping 8.8.8.8 returned the glorious sign of being in touch with the world again:
 
 Sweet.
 
+Comment:
+
+    The real solution was to disable wpa_supplicant, this has been added to update_stretch.sh:
+
+        systemctl stop wpa_supplicant
+        systemctl disable wpa_supplicant
+
+    Sorry if this confuses you, but I'll be keeping the previous section in the Readme if it happens to someone else.
+
 The login screen started bugging me out, so I went to my local /etc/lightdm/lightdm.conf
 down to the [Seat:*]-section and modified the autologin-user and autologin-user-timeout to:
 
 	autologin-user=chip
 	autologin-user-timeout=0
-
-The Wifi screen on pocket-home doesn't work still, so I'll have to figure that out..
 
 Pico8 dissappeared for some reason. Got the latest one like so:
 
@@ -174,21 +181,10 @@ together with the files in assets/appIcons
 
 Audio glitches:
 
-A huge problem with CHIP is that anything audio-related will stutter.
-This repo solves a lot of the problems:
+A huge problem with CHIP is that anything audio-related will stutter. 
+This solves all of the intermittent glitching by replacing the battery monitor and reducing the logging level of ubihealthd:
 
 	https://github.com/aleh/pocketchip-batt
 
-I also made a collection of scripts (scripts folder in this repo) that will mitigate this even further
-My scripts require sudo to run, if you don't wanna type passwords you can add them to sudoers
-	sudo nano /etc/sudoers
-
-The nuclear option is to disable pulseaudio:
-	pulseaudio -k 
-until it complains that the process isn't there, then rename the binary 
-	mv /usr/bin/pulseaudio  /usr/bin/pulseaudio~
-Haven't found any downsides to doing this though
-
 TODO:
-	Figure out how to get wlan0 back again
 	Get a halfway decent video player for Youtube streaming working
