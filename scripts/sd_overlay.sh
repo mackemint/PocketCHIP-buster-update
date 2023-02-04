@@ -1,4 +1,4 @@
-tar xfvz ../assets/mmc2-4.4.13-ntc-mlc.tar.gz
+tar xfvz ../assets/mmc2-4.4.13-ntc-mlc.tar.gz -C ../assets
 mkdir /lib/firmware/overlays
 cp ../assets/mmc2-4.4.13-ntc-mlc/mmc2-ntc.dtbo /lib/firmware/overlays/
 cp ../assets/mmc2-4.4.13-ntc-mlc/mmc2-overlay.service /etc/systemd/system/
