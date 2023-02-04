@@ -16,6 +16,15 @@ Update to Buster:
         reboot
 		
 
+Update to Bullseye:
+	ssh in
+	cd scripts
+        sudo ./update_bullseye.sh
+        wait...
+	answer yes to restarts, no to everything else
+        reboot
+		
+
 Upgrading to Stretch:
 
     replace /etc/apt/sources.list  -> wget http://maba.dk/sources_stretch.list
