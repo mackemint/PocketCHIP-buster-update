@@ -1,0 +1,31 @@
+Section "Files"
+        ModulePath "/usr/lib/arm-linux-gnueabihf/xorg/modules/"
+        ModulePath "/usr/lib/xorg/modules/"
+EndSection
+
+Section "Monitor"
+	Identifier	"VGA"
+	Option		"PreferredMode"	"1024x768_60.00"
+EndSection
+
+Section "Monitor"
+	Identifier	"HDMI"
+	Option		"PreferredMode"	"1280x720_60.00"
+EndSection
+
+Section "Monitor"
+	Identifier	"Composite"
+	Option		"PreferredMode"	"NTSC10"
+EndSection
+
+
+Section "Screen"
+	Identifier	"Screen0"
+	Device		"Card0"
+EndSection
+
+
+Section "Device"
+	Identifier	"Card0"
+	Driver		"fbdev"
+EndSection
